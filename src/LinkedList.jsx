@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import './LinkedList.css'; // Import your CSS file for styling
 
 // Define a node component
-const Node = ({ value }) => {
-  return <div className="node">{value}</div>;
+const Node = ({ value, hasNext, hasPrevious }) => {
+  return (
+    <div className="node">
+      {hasPrevious && <div className="arrow left">&#8592;</div>}
+      <div className="value">{value}</div>
+      {hasNext && <div className="arrow right">&#8594;</div>}
+    </div>
+  );
 };
+
+
+
 
 // Define the linked list component
 const LinkedList = () => {
@@ -13,13 +22,13 @@ const LinkedList = () => {
 
   const insertFirst = () => {
     if (!inputValue) return;
-    const newList = [inputValue, ...list];
+    const newList = [{ value: inputValue }, ...list];
     animateListChange(newList);
   };
 
   const insertLast = () => {
     if (!inputValue) return;
-    const newList = [...list, inputValue];
+    const newList = [...list, { value: inputValue }];
     animateListChange(newList);
   };
 
@@ -63,12 +72,18 @@ const LinkedList = () => {
         <button onClick={deleteLast}>Delete Last</button>
       </div>
       <div className="node-container">
-        {list.map((value, index) => (
-          <Node key={index} value={value} />
+        {list.map((node, index) => (
+          <Node
+            key={index}
+            value={node.value}
+            hasNext={index < list.length - 1}
+          />
         ))}
       </div>
     </div>
   );
 };
+
+
 
 export default LinkedList;
