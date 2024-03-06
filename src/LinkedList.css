@@ -1,63 +1,37 @@
-.linked-list {
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  .controls {
-    margin-bottom: 20px;
-  }
-  
-  .controls input {
-    padding: 5px;
-    margin-right: 10px;
-  }
-  
-  .controls button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .node-container {
+.linked-list-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .linked-list {
+    display: flex;
+    align-items: center;
   }
   
   .node {
-    display: inline-block;
-    padding: 10px;
-    margin: 0 5px;
-    background-color: #007bff;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .value {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    animation: fadeIn 0.5s ease;
+    padding: 5px 10px;
   }
   
-  .animate {
-    animation: scaleInOut 0.5s ease;
+  .arrow {
+    margin-left: 10px;
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .controls {
+    margin-top: 20px;
   }
   
-  @keyframes scaleInOut {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
+  button {
+    margin-right: 10px;
   }
   

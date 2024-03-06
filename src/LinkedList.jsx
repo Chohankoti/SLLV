@@ -1,71 +1,48 @@
-import React, { useState } from 'react';
-import './LinkedList.css'; // Import your CSS file for styling
+import React, { useState } from "react";
+import "./LinkedList.css";
 
-// Define a node component
-const Node = ({ value }) => {
-  return <div className="node">{value}</div>;
-};
-
-// Define the linked list component
 const LinkedList = () => {
   const [list, setList] = useState([]);
-  const [inputValue, setInputValue] = useState('');
 
-  const insertFirst = () => {
-    if (!inputValue) return;
-    const newList = [inputValue, ...list];
-    animateListChange(newList);
+  const insertFirst = (value) => {
+    setList([{ value, id: Date.now() }, ...list]);
   };
 
-  const insertLast = () => {
-    if (!inputValue) return;
-    const newList = [...list, inputValue];
-    animateListChange(newList);
+  const insertLast = (value) => {
+    setList([...list, { value, id: Date.now() }]);
   };
 
   const deleteFirst = () => {
-    if (list.length === 0) return;
-    const newList = list.slice(1);
-    animateListChange(newList);
+    if (list.length > 0) {
+      const newList = [...list];
+      newList.shift();
+      setList(newList);
+    }
   };
 
   const deleteLast = () => {
-    if (list.length === 0) return;
-    const newList = list.slice(0, -1);
-    animateListChange(newList);
-  };
-
-  const animateListChange = (newList) => {
-    // Add animation class
-    document.querySelector('.node-container').classList.add('animate');
-
-    // After animation, update the list
-    setTimeout(() => {
+    if (list.length > 0) {
+      const newList = [...list];
+      newList.pop();
       setList(newList);
-      setInputValue('');
-      // Remove animation class after transition
-      document.querySelector('.node-container').classList.remove('animate');
-    }, 500);
+    }
   };
 
   return (
-    <div className="linked-list">
+    <div className="linked-list-container">
+      <div className="linked-list">
+        {list.map((node, index) => (
+          <div className="node" key={node.id}>
+            <div className="value">{node.value}</div>
+            {index < list.length - 1 && <div className="arrow">➔</div>}
+          </div>
+        ))}
+      </div>
       <div className="controls">
-        <input
-          type="number"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Enter a value"
-        />
-        <button onClick={insertFirst}>Insert First</button>
-        <button onClick={insertLast}>Insert Last</button>
+        <button onClick={() => insertFirst("First")}>Insert First</button>
+        <button onClick={() => insertLast("Last")}>Insert Last</button>
         <button onClick={deleteFirst}>Delete First</button>
         <button onClick={deleteLast}>Delete Last</button>
-      </div>
-      <div className="node-container">
-        {list.map((value, index) => (
-          <Node key={index} value={value} />
-        ))}
       </div>
     </div>
   );
