@@ -6,6 +6,7 @@ const Node = ({ value, next }) => {
   return (
     <div className="node">
       <div className="value">{value}</div>
+      <div className="line"></div>
       <div className="address">{next !== null ? next : "NULL"}</div>
     </div>
   );

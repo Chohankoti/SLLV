@@ -32,8 +32,9 @@
 }
 
 .node {
-  display: flex; /* Display value and address in the same row */
-  align-items: center; /* Center align items */
+  position: relative;
+  display: flex;
+  align-items: center;
   padding: 20px;
   margin: 0 10px;
   background-color: #007bff;
@@ -43,9 +44,18 @@
 }
 
 .value {
-  margin-right: 10px; /* Add space between value and address */
+  color:  #fff; /* Color for value */
+  margin-right: 10px; /* Space between value and line */
+}
+
+.line {
+  width: 2px; /* Width of the line */
+  height: 100%; /* Height of the line */
+  background-color: #fff; /* Color of the line */
+  margin: 0 10px; /* Space between value and address */
 }
 
 .address {
+  color: #fff; /* Color for address */
   font-style: italic; /* Italicize the address */
 }
