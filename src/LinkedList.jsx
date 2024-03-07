@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import './LinkedList.css';
 
 const Node = ({ value, next }) => {
+  const address = next !== null ? next : "X";
+
   return (
     <div className="node">
       <div className="value">{value}</div>
       <div className="line"></div>
-      <div className="address">{next !== null ? next : "X"}</div>
+      <div className="address">{address}</div>
     </div>
   );
 };
@@ -22,14 +24,17 @@ const LinkedList = () => {
 
   const insertFirst = () => {
     if (!inputValue) return;
-    const newList = [{ value: inputValue }, ...list];
+    const newList = [{ value: inputValue, next: list.length > 0 ? list[0].value : null }, ...list];
     setList(newList);
     setInputValue('');
   };
 
   const insertLast = () => {
     if (!inputValue) return;
-    const newList = [...list, { value: inputValue }];
+    const newList = [...list, { value: inputValue, next: null }];
+    if (list.length > 0) {
+      list[list.length - 1].next = inputValue;
+    }
     setList(newList);
     setInputValue('');
   };
