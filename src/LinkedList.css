@@ -1,3 +1,4 @@
+/* LinkedList.css */
 .linked-list {
   margin: 20px auto;
   text-align: center;
@@ -7,14 +8,16 @@
   margin-bottom: 20px;
 }
 
-.controls input {
-  padding: 5px;
+.controls .input-field {
+  padding: 10px;
   margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.controls button {
+.controls .btn {
   margin-right: 5px;
-  padding: 5px 10px;
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -25,56 +28,24 @@
 .node-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .node {
-  position: relative; 
-  display: inline-block;
-  padding: 10px;
-  margin: 0 10px; 
+  display: flex; /* Display value and address in the same row */
+  align-items: center; /* Center align items */
+  padding: 20px;
+  margin: 0 10px;
   background-color: #007bff;
   color: #fff;
   border-radius: 5px;
-  animation: fadeIn 0.5s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.arrow {
-  position: absolute; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  font-size: 1.2rem;
-  color: black; 
-  animation: fadeIn 0.5s ease; 
+.value {
+  margin-right: 10px; /* Add space between value and address */
 }
 
-.arrow.left {
-  left: -15px;
-}
-
-.arrow.right {
-  right: -15px; 
-}
-
-.animate {
-  animation: scaleInOut 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleInOut {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+.address {
+  font-style: italic; /* Italicize the address */
 }
