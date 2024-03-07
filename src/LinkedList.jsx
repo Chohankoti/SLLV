@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // LinkedList.jsx
 import React, { useState } from 'react';
 import './LinkedList.css';
@@ -12,10 +13,15 @@ const Node = ({ value, next }) => {
   );
 };
 
+=======
+import React, { useState } from "react";
+import "./LinkedList.css";
+
+>>>>>>> f424382b110de9b32020855a94f8e690324e5a78
 const LinkedList = () => {
   const [list, setList] = useState([]);
-  const [inputValue, setInputValue] = useState('');
 
+<<<<<<< HEAD
   const insertFirst = () => {
     if (!inputValue) return;
     const newList = [{ value: inputValue, next: list.length > 0 ? 0 : null }, ...list];
@@ -51,12 +57,44 @@ const LinkedList = () => {
         return {...node, next: index === newList.length - 1 ? null : node.next};
       });
       setList(updatedList);
+=======
+  const insertFirst = (value) => {
+    setList([{ value, id: Date.now() }, ...list]);
+  };
+
+  const insertLast = (value) => {
+    setList([...list, { value, id: Date.now() }]);
+  };
+
+  const deleteFirst = () => {
+    if (list.length > 0) {
+      const newList = [...list];
+      newList.shift();
+      setList(newList);
+    }
+  };
+
+  const deleteLast = () => {
+    if (list.length > 0) {
+      const newList = [...list];
+      newList.pop();
+      setList(newList);
+>>>>>>> f424382b110de9b32020855a94f8e690324e5a78
     }
   };
 
   return (
-    <div className="linked-list">
+    <div className="linked-list-container">
+      <div className="linked-list">
+        {list.map((node, index) => (
+          <div className="node" key={node.id}>
+            <div className="value">{node.value}</div>
+            {index < list.length - 1 && <div className="arrow">➔</div>}
+          </div>
+        ))}
+      </div>
       <div className="controls">
+<<<<<<< HEAD
         <input
           type="number"
           value={inputValue}
@@ -78,6 +116,13 @@ const LinkedList = () => {
           />
         ))}
       </div>
+=======
+        <button onClick={() => insertFirst("First")}>Insert First</button>
+        <button onClick={() => insertLast("Last")}>Insert Last</button>
+        <button onClick={deleteFirst}>Delete First</button>
+        <button onClick={deleteLast}>Delete Last</button>
+      </div>
+>>>>>>> f424382b110de9b32020855a94f8e690324e5a78
     </div>
   );
 };
